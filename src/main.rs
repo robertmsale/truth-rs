@@ -87,7 +87,7 @@ fn main() {
     print!("│");
     print!(" ={} │\n", " ".repeat(longest_token-1));
 
-    for i in 0..tokens.len()*tokens.len()-1 {
+    for i in 0..tokens.len()*tokens.len() {
         let mut expression = input_string.clone();
         let mut j = 0;
         for token in &tokens {
