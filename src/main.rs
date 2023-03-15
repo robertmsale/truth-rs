@@ -80,12 +80,9 @@ fn main() {
     for token in &tokens {
         print!("│");
         print!(" {:^1$} ", token, longest_token);
-        for _ in 0..token.len()-longest_token {
-            print!(" ");
-        }
     }
     print!("│");
-    print!(" ={} │\n", " ".repeat(longest_token-1));
+    print!(" {:^1$} │\n", "=", longest_token);
     let mut last_mask: usize = 1 << tokens.len();
     let mut i = 0;
     while i != last_mask {
@@ -102,13 +99,10 @@ fn main() {
         for token in &tokens {
             print!("│");
             print!(" {:^1$} ", if (i >> j) & 1 == 1 {"1"} else {"0"}, longest_token);
-            for _ in 0..token.len()-longest_token {
-                print!(" ");
-            }
             j = j + 1;
         }
         print!("│");
-        print!(" {} │\n", if res {"1"} else {"0"});
+        print!(" {:^1$} │\n", if res {"1"} else {"0"}, longest_token);
         i += 1;
     }
 
