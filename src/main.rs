@@ -86,8 +86,9 @@ fn main() {
     }
     print!("│");
     print!(" ={} │\n", " ".repeat(longest_token-1));
-
-    for i in 0..tokens.len()*tokens.len() {
+    let mut last_mask: usize = 1 << tokens.len();
+    let mut i = 0;
+    while i != last_mask {
         let mut expression = input_string.clone();
         let mut j = 0;
         for token in &tokens {
@@ -108,6 +109,7 @@ fn main() {
         }
         print!("│");
         print!(" {} │\n", if res {"1"} else {"0"});
+        i += 1;
     }
 
     println!("{}", bottom_bar);
